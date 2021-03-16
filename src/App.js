@@ -1,9 +1,13 @@
 import styled from 'styled-components';
-import React, {useState} from 'react'
+import React from 'react'
 import CountryList from './component/CountryList'
 import CountryPage from './component/CountryPage'
 import WeatherPage from './component/WeatherPage';
-
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
 const StyledParent = styled.div`
   width:100%;
   ul{
@@ -26,7 +30,7 @@ const StyledParent = styled.div`
   }
   .country{
     padding: 10px;
-    font-size: 22px;
+    font-size: 18px;
     text-align: center;
   }
   .country-capital {
@@ -42,31 +46,109 @@ const StyledParent = styled.div`
     padding: 0 10px;
     border: 1px solid;
   }
+  .card{
+    width: 80%;
+    margin: 30px auto;
+    background: #fff;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    padding: 20px;
+    border-radius: 5px;
+  }
+  .cord-card{
+    height: 400px;
+  }
+  .line {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid #ccc;
+  }
+  .temp-card{
+    display: flex;
+    justify-content: space-between;
+  }
+  .line:last-child {
+    border-bottom: 0;
+  }
+  .actual-temp {
+      flex: 1;
+  }
+  .actual-temp > label {
+    font-size: 16px;
+    text-transform: capitalize;
+  }
+  .line-wrapper {
+      flex: 1;
+  }
+  .actual-temp .value{
+    height: 120px;
+    display: flex;
+  }
+  .actual-temp .value img{
+    height: 60px;
+    padding: 30px 0;
+  }
+  .actual-temp .value span {
+    font-size: 50px;
+    line-height: 120px;
+    display: flex;
+  }
+  .actual-temp .value span span{
+    color: #888;
+    font-size: 30px;
+    line-height: 130px
+  }
+  .card > .header {
+    font-size: 18px;
+    margin: 10px 0;
+  }
+  .back-btn-mobile{
+    display: none;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    margin-top: -4px;
+  }
+
+  @media (max-width: 500px) {
+    .back-btn{
+      display: none;
+    }
+    .back-btn-mobile{
+      display: flex;
+    }
+    .country{
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+    }
+  }
+
 `;
 
 function App() {
-  const [firstScreen, setFirstScreen] = useState(true);
-  const [weatherPage, setWeatherPage] = useState(false);
-  const [code, setCode] = useState(null);
-  const clikLineItem = (e, item) => {
-    setCode(item.code)
-    setFirstScreen(false)
-  }
-  const goBack = () => {
-    console.log('a')
-    setCode(null)
-    setFirstScreen(true)
-  }
-  const clickState = (state) => {
-    console.log(state)
-    setWeatherPage(true)
-  }
+  
+  
   return (
     <StyledParent>
-      {
+      <Router>
+        <Switch>
+          <Route path="/weather">
+            <WeatherPage />
+          </Route>
+          <Route path="/country">
+            <CountryPage />
+          </Route>
+          <Route path="/">
+            <CountryList />
+          </Route>
+        </Switch>
+      </Router>
+      {/* {
         firstScreen ? <CountryList clikLineItem={clikLineItem}/> : 
-          (weatherPage ? <WeatherPage /> : <CountryPage code={code} goBack={goBack} clickState={clickState} />)
-      }
+          (weatherPage ? <WeatherPage name={state} goBackWeather={goBackWeather}/> : <CountryPage code={code} goBack={goBack} clickState={clickState} />)
+      } */}
     </StyledParent>
     
   );

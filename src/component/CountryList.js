@@ -1,5 +1,6 @@
 import environment from './../createRelayEnvironment';
 import {QueryRenderer, graphql} from 'react-relay';
+import { Link } from 'react-router-dom';
 const CountryListQuery = graphql`
 query CountryListQuery {
     countries {
@@ -10,7 +11,7 @@ query CountryListQuery {
 }
 `
 
-function CountryList(props) {
+function CountryList() {
     return(
         <QueryRenderer
             environment={environment}
@@ -26,7 +27,11 @@ function CountryList(props) {
             return (
             <ul>
                 {
-                    relayProps.countries.map(item => <li onClick={(e) => props.clikLineItem(e, item)} key={item.name} >{item.name} ({item.code})</li>)
+                    relayProps.countries.map(item => 
+                        <li key={item.name} >
+                            <Link to={`/country?code=${item.code}`}>{item.name} ({item.code})</Link>
+                        </li>
+                    )
                 }
             </ul>
             )
