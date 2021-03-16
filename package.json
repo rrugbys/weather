@@ -79,6 +79,8 @@
     "workbox-webpack-plugin": "5.1.4"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "yarn setup && node scripts/start.js",
     "build": "node scripts/build.js",
     "get-schema": "node scripts/getSchema.js",
