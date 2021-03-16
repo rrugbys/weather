@@ -16,11 +16,17 @@ const StyledParent = styled.div`
     padding: 0;
   }
   li{
+  
+  }
+  a{
     padding: 10px;
+    display: block;
     line-height: 40px;
-    background: #f3f3f3;
+    background: #FFF;
     border-bottom: 1px solid #999;
     cursor: pointer;
+    text-decoration: none;
+    color: #222;
   }
   .header{
     position: -webkit-sticky;
@@ -32,10 +38,16 @@ const StyledParent = styled.div`
     padding: 10px;
     font-size: 18px;
     text-align: center;
+    min-height: 40px;
+    line-height: 40px;
+    background: #EB4D4D;
+    color: #FFF;
   }
   .country-capital {
     text-align:center;
     padding-bottom: 10px;
+    background: #EB4D4D;
+    color: #FFF;
   }
   .back-btn{
     cursor: pointer;
@@ -119,7 +131,6 @@ const StyledParent = styled.div`
       display: flex;
     }
     .country{
-      margin-top: 30px;
       display: flex;
       justify-content: center;
     }
