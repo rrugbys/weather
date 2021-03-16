@@ -2,6 +2,7 @@
   "name": "weather",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://github.com/rrugbys/weather",
   "dependencies": {
     "@babel/core": "7.12.3",
     "@pmmmwh/react-refresh-webpack-plugin": "0.4.3",
@@ -80,7 +81,7 @@
   },
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -b master -d build",
     "start": "yarn setup && node scripts/start.js",
     "build": "node scripts/build.js",
     "get-schema": "node scripts/getSchema.js",
