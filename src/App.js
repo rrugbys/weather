@@ -56,7 +56,8 @@ const StyledParent = styled.div`
     left: 40px;
     line-height: 35px;
     padding: 0 10px;
-    border: 1px solid;
+    border: 1px solid #fff;
+    color: #FFF;
   }
   .card{
     width: 80%;
@@ -121,6 +122,7 @@ const StyledParent = styled.div`
     align-items: center;
     width: 30px;
     margin-top: -4px;
+    color: #FFF;
   }
 
   @media (max-width: 500px) {
