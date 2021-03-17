@@ -158,10 +158,6 @@ function App() {
           </Route>
         </Switch>
       </Router>
-      {/* {
-        firstScreen ? <CountryList clikLineItem={clikLineItem}/> : 
-          (weatherPage ? <WeatherPage name={state} goBackWeather={goBackWeather}/> : <CountryPage code={code} goBack={goBack} clickState={clickState} />)
-      } */}
     </StyledParent>
     
   );
